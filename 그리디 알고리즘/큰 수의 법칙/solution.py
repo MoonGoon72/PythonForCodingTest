@@ -17,7 +17,7 @@ for _ in range(num):  # 더하는 횟수를 반복문으로 구현
 print(sum)
 
 #####################################################################
-# 이취코 해설
+# 이취코 단순하게 푸는 해설
 arr.sort()
 # 가장 큰 수와 그 다음 수만 필요함!
 first = arr[index - 1]
@@ -37,3 +37,14 @@ while True:
     num -= 1 # 더할 때마다 1씩 빼기
 
 print(result) # 최종 답안
+
+######################################################################
+# 이취코 효율적으로 푸는 법
+count = int(num / (rep + 1)) * rep  # 얘만큼 수열이 반복됨! (first + first + ... + second) + (first + first + ... + second) ...
+count += num % ( rep + 1 )  # 나누어떨어지지 않으면 반복하고 남은만큼이 요만큼
+
+result = 0
+result += count * first  # count만큼 가장 큰 수 반복하니까 그만큼 곱해서 더해줌
+result += (num - count) * second  # 전체에서 count를 뺀 거만큼 second를 더해줌
+
+print(result)
